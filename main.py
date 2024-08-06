@@ -8,8 +8,8 @@ random_title = random.choice(titles)
 
 def main():
     # Title
-    st.sidebar.title("Food Recommender")
-    st.sidebar.write("Hello! Please tell me your preferences:")
+    st.sidebar.title("What do you wanna eat?")
+    st.sidebar.write("Please tell me your preferences:")
 
     # Input fields
     favorite_foods = st.sidebar.text_input("Favorite foods")
@@ -28,7 +28,7 @@ def main():
         st.header(random_title)
 
         output = suggest_food(favorite_foods, favorite_flavors, dislikes, others)
-
+        print(output)
 
         # output = suggest_food(favorite_foods, favorite_flavors, dislikes, others, last_output)
 
