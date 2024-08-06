@@ -4,9 +4,11 @@ from gradio_client import Client
 from dotenv import load_dotenv
 import os
 
+
 # for testing locally --------------------------------------
 load_dotenv()
 goog_api_key = os.getenv('GOOGLE_API_KEY')
+
 
 # # for testing on streamlit share -----------------------------
 # goog_api_key = st.secrets['GOOGLE_API_KEY']
@@ -48,16 +50,10 @@ def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
 
 
 
-
-
-
 def image_generator(answer):
-
     '''
-    Generates images for recipe.
-
+    Generate images for recipe.
     '''
-
     client = Client("ByteDance/SDXL-Lightning")
 
     result = client.predict(
@@ -65,6 +61,7 @@ def image_generator(answer):
             "1-Step",   # Literal['1-Step', '2-Step', '4-Step', '8-Step']  in 'Select inference steps' Dropdown component
             api_name="/generate_image_1"
     )
+
     file_path = result.split('gradio')[1]
     url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
 
