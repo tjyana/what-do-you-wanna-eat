@@ -5,13 +5,13 @@ from dotenv import load_dotenv
 import os
 
 
-# for testing locally --------------------------------------
-load_dotenv()
-goog_api_key = os.getenv('GOOGLE_API_KEY')
+# # for testing locally --------------------------------------
+# load_dotenv()
+# goog_api_key = os.getenv('GOOGLE_API_KEY')
 
 
-# # for testing on streamlit share -----------------------------
-# goog_api_key = st.secrets['GOOGLE_API_KEY']
+# for testing on streamlit share -----------------------------
+goog_api_key = st.secrets['GOOGLE_API_KEY']
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     model = genai.GenerativeModel('gemini-1.5-flash')
