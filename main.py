@@ -1,4 +1,10 @@
+import streamlit as st
+from utils.functions import suggest_food, image_generator
+import random
 
+titles = ['You should eat...', 'How about...', 'I recommend...', 'Try this!', 'Why not...',
+          'Have you had...', 'You might like...', 'Consider...', 'What about...']
+random_title = random.choice(titles)
 
 def main():
     # Title
