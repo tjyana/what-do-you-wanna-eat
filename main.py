@@ -26,18 +26,19 @@ def main():
         st.session_state.others = others
 
         st.header(random_title)
-
+        print('generating food...')
         output = suggest_food(favorite_foods, favorite_flavors, dislikes, others)
 
         food = output.split("$PL!T")[0]
         analysis = output.split("$PL!T")[-1]
         st.header(food)
-        # output = suggest_food(favorite_foods, favorite_flavors, dislikes, others, last_output)
 
-
-        url = image_generator(output)
-        st.image(url, use_column_width=True)
-
+        try:
+            url = image_generator(output)
+            st.image(url, use_column_width=True)
+        except Exception as e:
+            st.warning("[Could not generate image. Please imagine something really really good!]")
+            print(f"Error generating image: {e}")
         st.write(analysis)
 
 
