@@ -5,13 +5,13 @@ from dotenv import load_dotenv
 import os
 
 
-# for testing locally --------------------------------------
-load_dotenv()
-goog_api_key = os.getenv('GOOGLE_API_KEY')
+# # for testing locally --------------------------------------
+# load_dotenv()
+# goog_api_key = os.getenv('GOOGLE_API_KEY')
 
 
-# # for testing on streamlit share -----------------------------
-# goog_api_key = st.secrets['GOOGLE_API_KEY']
+# for testing on streamlit share -----------------------------
+goog_api_key = st.secrets['GOOGLE_API_KEY']
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     model = genai.GenerativeModel('gemini-1.5-flash')
@@ -39,8 +39,24 @@ def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     If inputs don't make sense, please consider that it may be a non-English word spelled out in English.
 
     Output format:
+
     [Name of the dish]
     [Short summary of what's in the dish ~20 words]
+
+    $PL!T
+
+    Analysis: [Analysis of the favorite foods, flavors, and cuisines]
+
+
+
+    Example output format:
+
+    Korean Bulgogi Tacos    \n
+    Thinly sliced marinated beef, grilled and served in warm tortillas with kimchi and gochujang mayo.  \n
+
+    $PL!T   \n
+
+    Analysis: This person enjoys classic American comfort food with a focus on hearty, savory flavors and a preference for spicy dishes. Burgers, pizza, and nachos all feature bold flavor profiles and often incorporate spicy elements like jalapeños or chili peppers. Korean Bulgogi Tacos offer a similar combination of savory, smoky, and spicy flavors with the umami richness of beef and the spicy kick of gochujang.
 
     """)
 
