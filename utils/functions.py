@@ -70,7 +70,8 @@ def image_generator(answer):
     '''
     Generate images for recipe.
     '''
-    client = Client("ByteDance/SDXL-Lightning")
+    with st.spinner('Initializing model...'):
+        client = Client("ByteDance/SDXL-Lightning")
 
     with st.spinner('Generating image...'):
         result = client.predict(
