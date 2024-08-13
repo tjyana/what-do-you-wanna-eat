@@ -28,25 +28,26 @@ def main():
         st.header(random_title)
 
         output = suggest_food(favorite_foods, favorite_flavors, dislikes, others)
-        print(output)
+        st.write(output)
 
         # output = suggest_food(favorite_foods, favorite_flavors, dislikes, others, last_output)
 
 
         url = image_generator(output)
+        st.image(url, use_column_width=True)
 
         # add func to keep last output from showing
         # st.session_state.last_output = output.split("\n")[-2]
 
-        process_inputs(output, url)
+#         process_inputs(output, url)
 
 
 
-def process_inputs(input1, url):
-    # Function to display the final output
-    # Process the inputs here
-    st.write(" ", input1)
-    st.image(url, use_column_width=True)
+# def process_inputs(input1, url):
+#     # Function to display the final output
+#     # Process the inputs here
+#     st.write(" ", input1)
+#     st.image(url, use_column_width=True)
 
 
 if __name__ == "__main__":
