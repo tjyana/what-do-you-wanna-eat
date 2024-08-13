@@ -72,11 +72,12 @@ def image_generator(answer):
     '''
     client = Client("ByteDance/SDXL-Lightning")
 
-    result = client.predict(
-            answer, # str  in 'Enter your prompt (English)' Textbox component
-            "1-Step",   # Literal['1-Step', '2-Step', '4-Step', '8-Step']  in 'Select inference steps' Dropdown component
-            api_name="/generate_image_1"
-    )
+    with st.spinner('Generating image...'):
+        result = client.predict(
+                answer, # str  in 'Enter your prompt (English)' Textbox component
+                "1-Step",   # Literal['1-Step', '2-Step', '4-Step', '8-Step']  in 'Select inference steps' Dropdown component
+                api_name="/generate_image_1"
+        )
 
     file_path = result.split('gradio')[1]
     url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
