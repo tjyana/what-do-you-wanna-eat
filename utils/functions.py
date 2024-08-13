@@ -1,16 +1,9 @@
 import streamlit as st
 import google.generativeai as genai
 from gradio_client import Client
-from dotenv import load_dotenv
-import os
 
 
-# # for testing locally --------------------------------------
-# load_dotenv()
-# goog_api_key = os.getenv('GOOGLE_API_KEY')
-
-
-# for testing on streamlit share -----------------------------
+# Load the Google API key
 goog_api_key = st.secrets['GOOGLE_API_KEY']
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
