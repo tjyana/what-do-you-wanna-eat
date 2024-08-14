@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 
-# # for testing locally --------------------------------------
+# for testing locally --------------------------------------
 # load_dotenv()
 # goog_api_key = os.getenv('GOOGLE_API_KEY')
 

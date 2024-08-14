@@ -34,8 +34,9 @@ def main():
         st.header(food)
 
         try:
-            url = image_generator(output)
-            st.image(url, use_column_width=True)
+            # url = image_generator(output)
+            st.image(https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio/eafcc0db1b589bdbce8ba19c5968a6cc74df6504/image.webp, use_column_width=True)
+            # st.image(url, use_column_width=True)
         except Exception as e:
             st.warning("[Could not generate image. Please imagine something really really good!]")
             print(f"Error generating image: {e}")
