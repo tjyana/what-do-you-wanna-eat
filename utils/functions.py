@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 
-# for testing locally --------------------------------------
+# # for testing locally --------------------------------------
 # load_dotenv()
 # goog_api_key = os.getenv('GOOGLE_API_KEY')
 
@@ -70,6 +70,7 @@ def image_generator(answer):
     '''
     Generate images for recipe.
     '''
+
     with st.spinner('Initializing model...'):
         client = Client("ByteDance/SDXL-Lightning")
 
@@ -82,6 +83,10 @@ def image_generator(answer):
 
     file_path = result.split('gradio')[1]
     url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
-    st.write(url)
+
     st.write(result)
+    st.write(result.split('gradio')[0])
+    st.write(file_path)
+    st.write(url)
+    st.write('https://bytedance-sdxl-lightning.hf.space/file=/' + result)
     return url
