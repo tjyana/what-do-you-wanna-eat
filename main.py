@@ -39,6 +39,7 @@ def main():
         except Exception as e:
             st.warning("[Could not generate image. Please imagine something really really good!]")
             print(f"Error generating image: {e}")
+
         st.write(analysis)
 
 

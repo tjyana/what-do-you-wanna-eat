@@ -15,7 +15,7 @@ goog_api_key = st.secrets['GOOGLE_API_KEY']
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     model = genai.GenerativeModel('gemini-1.5-flash')
 
-    with st.spinner('Thinking of a what to eat...'):
+    with st.spinner('Thinking of what to eat...'):
         response = model.generate_content(f"""
         Favorite foods: ```{favorite_foods}```
         Favorite flavors and cuisines: ```{favorite_flavors}```
@@ -83,4 +83,5 @@ def image_generator(answer):
     file_path = result.split('gradio')[1]
     url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
     st.write(url)
+    st.write(result)
     return url
