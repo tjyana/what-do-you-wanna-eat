@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 import os
 
 
-# # for testing locally --------------------------------------
-# load_dotenv()
-# goog_api_key = os.getenv('GOOGLE_API_KEY')
+# for testing locally --------------------------------------
+load_dotenv()
+goog_api_key = os.getenv('GOOGLE_API_KEY')
 
-# Load Google API key
-goog_api_key = st.secrets['GOOGLE_API_KEY']
+# # Load Google API key
+# goog_api_key = st.secrets['GOOGLE_API_KEY']
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     model = genai.GenerativeModel('gemini-1.5-flash')
@@ -87,11 +87,11 @@ def image_generator(answer):
     # file_path = result.split('gradio')[1]
     # url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
 
-    # st.write(result)
-    # st.write(result.split('gradio')[0])
-    # st.write(file_path)
-    # st.write(url)
     url = 'https://bytedance-sdxl-lightning.hf.space/file=/' + result
+
+    st.write('full output from client: ', result)
+    st.write('result appended: ', url)
+
 
     time.sleep(2)
 
