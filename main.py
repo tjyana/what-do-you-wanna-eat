@@ -37,7 +37,7 @@ def main():
         st.header(food)
 
         try:
-            url = image_generator(output)
+            url = image_generator(food)
             # st.image('https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio/eafcc0db1b589bdbce8ba19c5968a6cc74df6504/image.webp', use_column_width=True)
             st.image(url, use_column_width=True)
         except Exception as e:
