@@ -1,6 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
 from gradio_client import Client
+import time
 # from dotenv import load_dotenv
 # import os
 
@@ -89,4 +90,6 @@ def image_generator(answer):
     st.write(file_path)
     st.write(url)
     st.write('https://bytedance-sdxl-lightning.hf.space/file=/' + result)
+
+    time.sleep(2)
     return url
