@@ -2,8 +2,9 @@ import streamlit as st
 import google.generativeai as genai
 from gradio_client import Client
 import time
-# from dotenv import load_dotenv
-# import os
+import requests
+from dotenv import load_dotenv
+import os
 
 
 # # for testing locally --------------------------------------
@@ -75,6 +76,7 @@ def image_generator(answer):
     with st.spinner('Initializing model...'):
         client = Client("ByteDance/SDXL-Lightning")
 
+
     with st.spinner('Generating image...'):
         result = client.predict(
                 answer, # str  in 'Enter your prompt (English)' Textbox component
@@ -82,14 +84,23 @@ def image_generator(answer):
                 api_name="/generate_image_1"
         )
 
-    file_path = result.split('gradio')[1]
-    url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
+    # file_path = result.split('gradio')[1]
+    # url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
 
-    st.write(result)
-    st.write(result.split('gradio')[0])
-    st.write(file_path)
-    st.write(url)
-    st.write('https://bytedance-sdxl-lightning.hf.space/file=/' + result)
+    # st.write(result)
+    # st.write(result.split('gradio')[0])
+    # st.write(file_path)
+    # st.write(url)
+    url = 'https://bytedance-sdxl-lightning.hf.space/file=/' + result
 
     time.sleep(2)
+
     return url
+
+
+def check_url(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        st.write("URL is valid and accessible.")
+    else:
+        st.write(f"URL returned status code: {response.status_code}")

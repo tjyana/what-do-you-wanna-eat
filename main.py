@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.functions import suggest_food, image_generator
+from utils.functions import suggest_food, image_generator, check_url
 import random
 
 
@@ -32,14 +32,20 @@ def main():
         print('generating food...')
         output = suggest_food(favorite_foods, favorite_flavors, dislikes, others)
 
+
         food = output.split("$PL!T")[0]
         analysis = output.split("$PL!T")[-1]
         st.header(food)
 
         try:
             url = image_generator(food)
-            # st.image('https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio/eafcc0db1b589bdbce8ba19c5968a6cc74df6504/image.webp', use_column_width=True)
+
+            check_url(url)
+
+
+
             st.image(url, use_column_width=True)
+
         except Exception as e:
             st.warning("[Could not generate image. Please imagine something really really good!]")
             print(f"Error generating image: {e}")
