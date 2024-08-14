@@ -87,7 +87,7 @@ def image_generator(answer):
     # file_path = result.split('gradio')[1]
     # url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
 
-    url = 'https://bytedance-sdxl-lightning.hf.space/file=/' + result
+    url = 'https://bytedance-sdxl-lightning.hf.space/file=' + result
 
     st.write('full output from client: ', result)
     st.write('result appended: ', url)
