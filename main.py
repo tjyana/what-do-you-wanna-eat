@@ -32,7 +32,6 @@ def main():
         print('generating food...')
         output = suggest_food(favorite_foods, favorite_flavors, dislikes, others)
 
-
         food = output.split("$PL!T")[0]
         analysis = output.split("$PL!T")[-1]
         st.header(food)
@@ -41,8 +40,6 @@ def main():
             url = image_generator(food)
 
             check_url(url)
-
-
 
             st.image(url, use_column_width=True)
 

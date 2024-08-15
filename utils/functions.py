@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 import os
 
 
-# for testing locally --------------------------------------
-load_dotenv()
-goog_api_key = os.getenv('GOOGLE_API_KEY')
+# # for testing locally --------------------------------------
+# load_dotenv()
+# goog_api_key = os.getenv('GOOGLE_API_KEY')
 
-# # Load Google API key
-# goog_api_key = st.secrets['GOOGLE_API_KEY']
+# Load Google API key
+goog_api_key = st.secrets['GOOGLE_API_KEY']
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     model = genai.GenerativeModel('gemini-1.5-flash')
@@ -65,7 +65,6 @@ def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     answer = response.text
 
     return answer
-
 
 
 def image_generator(answer):
