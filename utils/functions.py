@@ -123,7 +123,7 @@ def image_generator(answer):
     with st.spinner('Generating image...'):
         response = client.images.generate(
         model="dall-e-3",
-        prompt="answer",
+        prompt=answer,
         size="1024x1024",
         quality="standard",
         n=1,
