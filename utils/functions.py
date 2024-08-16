@@ -12,15 +12,15 @@ from openai import OpenAI
 # load_dotenv()
 # goog_api_key = os.getenv('GOOGLE_API_KEY')
 
-# for testing locally --------------------------------------
-load_dotenv()
-api_key = os.getenv('OPENAI_API_KEY')
+# # for testing locally --------------------------------------
+# load_dotenv()
+# api_key = os.getenv('OPENAI_API_KEY')
 
 # # Load Google API key
 # goog_api_key = st.secrets['GOOGLE_API_KEY']
 
-# # Load Google API key
-# api_key = st.secrets['OPENAI_API_KEY']
+# Load Google API key
+api_key = st.secrets['OPENAI_API_KEY']
 
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
