@@ -106,27 +106,28 @@ def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
 #     return url
 
 
+# for testing
 
-def check_url(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        st.write("URL is valid and accessible.")
-    else:
-        st.write(f"URL returned status code: {response.status_code}")
+# def check_url(url):
+#     response = requests.get(url)
+#     if response.status_code == 200:
+#         st.write("URL is valid and accessible.")
+#     else:
+#         st.write(f"URL returned status code: {response.status_code}")
 
 
 def image_generator(answer):
 
-
     client = OpenAI()
 
-    response = client.images.generate(
-    model="dall-e-3",
-    prompt="answer",
-    size="1024x1024",
-    quality="standard",
-    n=1,
-    )
+    with st.spinner('Generating image...'):
+        response = client.images.generate(
+        model="dall-e-3",
+        prompt="answer",
+        size="1024x1024",
+        quality="standard",
+        n=1,
+        )
 
     image_url = response.data[0].url
 
