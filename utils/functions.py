@@ -5,14 +5,23 @@ import time
 import requests
 from dotenv import load_dotenv
 import os
+from openai import OpenAI
 
 
 # # for testing locally --------------------------------------
 # load_dotenv()
 # goog_api_key = os.getenv('GOOGLE_API_KEY')
 
-# Load Google API key
-goog_api_key = st.secrets['GOOGLE_API_KEY']
+# for testing locally --------------------------------------
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
+
+# # Load Google API key
+# goog_api_key = st.secrets['GOOGLE_API_KEY']
+
+# # Load Google API key
+# api_key = st.secrets['OPENAI_API_KEY']
+
 
 def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     model = genai.GenerativeModel('gemini-1.5-flash')
@@ -67,34 +76,35 @@ def suggest_food(favorite_foods, favorite_flavors, dislikes, others):
     return answer
 
 
-def image_generator(answer):
-    '''
-    Generate images for recipe.
-    '''
+# def image_generator(answer):
+#     '''
+#     Generate images for recipe.
+#     '''
 
-    with st.spinner('Initializing model...'):
-        client = Client("ByteDance/SDXL-Lightning")
-
-
-    with st.spinner('Generating image...'):
-        result = client.predict(
-                answer, # str  in 'Enter your prompt (English)' Textbox component
-                "1-Step",   # Literal['1-Step', '2-Step', '4-Step', '8-Step']  in 'Select inference steps' Dropdown component
-                api_name="/generate_image_1"
-        )
-
-    # file_path = result.split('gradio')[1]
-    # url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
-
-    url = 'https://bytedance-sdxl-lightning.hf.space/file=' + result
-
-    st.write('full output from client: ', result)
-    st.write('result appended: ', url)
+#     with st.spinner('Initializing model...'):
+#         client = Client("ByteDance/SDXL-Lightning")
 
 
-    time.sleep(2)
+#     with st.spinner('Generating image...'):
+#         result = client.predict(
+#                 answer, # str  in 'Enter your prompt (English)' Textbox component
+#                 "1-Step",   # Literal['1-Step', '2-Step', '4-Step', '8-Step']  in 'Select inference steps' Dropdown component
+#                 api_name="/generate_image_1"
+#         )
 
-    return url
+#     # file_path = result.split('gradio')[1]
+#     # url = 'https://bytedance-sdxl-lightning.hf.space/file=/tmp/gradio' + file_path
+
+#     url = 'https://bytedance-sdxl-lightning.hf.space/file=' + result
+
+#     st.write('full output from client: ', result)
+#     st.write('result appended: ', url)
+
+
+#     time.sleep(2)
+
+#     return url
+
 
 
 def check_url(url):
@@ -103,3 +113,21 @@ def check_url(url):
         st.write("URL is valid and accessible.")
     else:
         st.write(f"URL returned status code: {response.status_code}")
+
+
+def image_generator(answer):
+
+
+    client = OpenAI()
+
+    response = client.images.generate(
+    model="dall-e-3",
+    prompt="a white siamese cat",
+    size="1024x1024",
+    quality="standard",
+    n=1,
+    )
+
+    image_url = response.data[0].url
+
+    return image_url
