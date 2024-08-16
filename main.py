@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.functions import suggest_food, image_generator, check_url
+from utils.functions import suggest_food, image_generator
 import random
 
 
@@ -39,7 +39,7 @@ def main():
         try:
             url = image_generator(food)
 
-            check_url(url)
+            # check_url(url)
 
             st.image(url, use_column_width=True)
 
